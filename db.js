@@ -9,19 +9,5 @@ const pool = new Pool({
   port: 5432, // Default PostgreSQL port
 });
 
-// Test connection
-pool.connect((err, client, release) => {
-  if (err) {
-    return console.error('Error acquiring client', err.stack);
-  }
-  client.query('SELECT NOW()', (err, result) => {
-    release(); // Release the client back to the pool
-    if (err) {
-      return console.error('Error executing query', err.stack);
-    }
-    console.log('Connected to PostgreSQL:', result.rows);
-  });
-});
-
 module.exports = pool;
 
