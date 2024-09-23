@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 const pool = require('./db')
+=======
+>>>>>>> origin/main
 const express = require('express');
 const app = express();
 const PORT = 3000;
 
+<<<<<<< HEAD
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -107,4 +111,12 @@ app.put('/products/:id', (req, res) => {
       };
       res.json('product updated successfully');
     })
+=======
+app.get('/', (req, res) => {
+    res.send('Hello world!');
+})
+
+app.listen(PORT, () => {
+    console.log(`Sever is listening on port ${PORT}`);
+>>>>>>> origin/main
 })

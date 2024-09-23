@@ -11,7 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "express": "^4.21.0",
     "pg": "^8.13.0"
+=======
+    "express": "^4.21.0"
+>>>>>>> origin/main
   }
 }
