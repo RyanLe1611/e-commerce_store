@@ -35,7 +35,6 @@ app.get('/customers/:id', (req, res) => {
       }
     })
 })
-
 // Add a new customer to the database
 app.post('/customers', (req, res) => {
     const { id, name, email } = req.body;
@@ -45,5 +44,17 @@ app.post('/customers', (req, res) => {
         return res.status(500).json({ error: 'Data insertion error' });
       }
       res.status(201).json({ message: 'Customer added successfully' });
+    })
+})
+// Update a customer data by id
+app.put('/customers/:id', (req, res) => {
+    const id = req.params.id;
+    const { name, email } = req.body;
+    pool.query('UPDATE customers SET name = $1, email = $2 WHERE id = $3', [name, email, id], (err, results) => {
+      if (err) {
+        console.error('Error updating data:', err);
+        return res.status(500).json({ error: 'Data updating error' });
+      }
+      res.status(200).json({ message: 'Customer updated successfully '});
     })
 })
