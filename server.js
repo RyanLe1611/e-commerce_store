@@ -23,6 +23,19 @@ app.get('/customers', (req, res) => {
         }
     });
 });
+// Retrieve a specific customer with the id
+app.get('/customers/:id', (req, res) => {
+    const id = req.params.id;
+    pool.query('SELECT * FROM customers WHERE id = $1', [id], (err, results) => {
+      if (err) {
+        console.error('Error running query', err.stack);
+        res.status(500).json({ error: 'Database query failed' });
+      } else {
+        res.json(results.rows[0]);
+      }
+    })
+})
+
 // Add a new customer to the database
 app.post('/customers', (req, res) => {
     const { id, name, email } = req.body;
